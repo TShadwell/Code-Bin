@@ -4,8 +4,8 @@ out = ""
 cmus = popen("cmus-remote -Q").read()
 def bf(needle):
 	return not cmus.find(needle) == -1
-def genbar(enders, bar, empty, length, ratio, head="NO HEAD"):
-	if head == "NO HEAD":
+def genbar(enders, bar, empty, length, ratio, head=None):
+	if head == None:
 		bl = round((length -2) / ratio)
 		return enders[0] + bar * bl + (length-2-bl) * empty + enders[1]
 	else:
