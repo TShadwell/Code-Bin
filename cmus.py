@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
 from os import popen
 out = ""
 cmus = popen("cmus-remote -Q").read()
@@ -29,7 +28,7 @@ else:
 		out += " %s - %s %s" % (data['artist'], data['title'], genbar("[]","="," ",6,int(duration)/int(position)))
 	elif bf("status paused"):
 		out += " %s - %s %s" % (data['artist'], data['title'], genbar("[]","="," ",6,int(duration)/int(position)))
-print (out.encode("UTF-8").decode())
+print (out)
 
 
 
