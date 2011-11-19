@@ -4,9 +4,13 @@ out = ""
 cmus = popen("cmus-remote -Q").read()
 def bf(needle):
 	return not cmus.find(needle) == -1
-def genbar(enders, bar, empty, length, ratio):
-	bl = round((length -2) / ratio)
-	return enders[0] + bar * bl + (length-2-bl) * empty + enders[1]
+def genbar(enders, bar, empty, length, ratio, head="NO HEAD"):
+	if head == "NO HEAD":
+		bl = round((length -2) / ratio)
+		return enders[0] + bar * bl + (length-2-bl) * empty + enders[1]
+	else:
+		bl = round((length -2) / ratio)
+		return enders[0] + bar * (bl-1) + head + (length-2-bl) * empty + enders[1]
 #Get info
 if bf("cmus is not running"):
 	out = "Nothing playing"
@@ -27,7 +31,7 @@ else:
 	elif bf("status playing"):
 		out += " %s - %s %s" % (data['artist'], data['title'], genbar("[]","="," ",6,int(duration)/int(position)))
 	elif bf("status paused"):
-		out += " %s - %s %s" % (data['artist'], data['title'], genbar("[]","="," ",6,int(duration)/int(position)))
+		out += " %s - %s %s" % (data['artist'], data['title'], genbar("[]","="," ",6,int(duration)/int(position), "|"))
 print (out)
 
 
