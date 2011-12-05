@@ -1,0 +1,1 @@
+from math import atan;w=100;g=[int('%i'%(0)if(x==0)else(atan(x)+atan(1/x)))for(x,v)in enumerate([0]*w)];j=[''.join(['x'if g[x]==y else' 'for x,t in enumerate(w)]) for y,w in enumerate([[0]*w for _ in range(max(g)-min(g)+1)])];j.reverse();print("\n".join(j))
