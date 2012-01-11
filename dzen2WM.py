@@ -62,7 +62,7 @@ dn_l = floor(\
 
 
 for window in desktops[desks[int(root["_NET_SHOWING_DESKTOP(CARDINAL)"])]]:
-	out += (window["_NET_WM_VISIBLE_NAME(UTF8_STRING)"].strip("\""))[:dn_l]
+	out += (str(window["_NET_WM_VISIBLE_NAME(UTF8_STRING)"]).strip("\""))[:dn_l] + " | "
 
 print(out)
 
